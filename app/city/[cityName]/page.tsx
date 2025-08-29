@@ -70,8 +70,8 @@ export default async function CityPage({ params }: CityPageProps) {
     notFound();
   }
 
-  // Use first story's image as hero image
-  const heroImage = stories[0]?.imagePath;
+  // Use dedicated city photo as hero image
+  const heroImage = `/city_photo/${cityName}.jpg`;
 
   return (
     <div className="min-h-screen">

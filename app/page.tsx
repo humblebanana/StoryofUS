@@ -57,10 +57,10 @@ export default async function Home() {
           <section className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                城市探索
+                城市探索 City
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Explore by City - 按城市探索我们收集的每一个温暖故事
+                Explore by City - 按城市探索每一个故事
               </p>
             </div>
 

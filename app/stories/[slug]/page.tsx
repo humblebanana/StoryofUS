@@ -161,23 +161,6 @@ export default async function StoryPage({ params }: StoryPageProps) {
           <ImageGallery images={galleryImages} />
         </div>
 
-        {/* Story Tags/Info */}
-        <div className="bg-warm-50 rounded-2xl p-8 mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">故事地点</h4>
-              <p className="text-muted-foreground">
-                {story.location || `${story.city}, China`}
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">故事特色</h4>
-              <p className="text-muted-foreground">
-                温暖相遇，人文故事
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Related Stories */}

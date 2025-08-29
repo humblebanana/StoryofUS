@@ -1,19 +1,27 @@
+"use client";
+
 import Link from "next/link";
-import { Instagram, Twitter, Heart } from "lucide-react";
+import { Mail, MessageCircle, Heart } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
+  const contactLinks = [
     {
-      href: "https://instagram.com",
-      icon: Instagram,
-      label: "Instagram",
+      href: "mailto:humbleguava@gmail.com",
+      icon: Mail,
+      label: "Email",
+      text: "humbleguava@gmail.com",
     },
     {
-      href: "https://twitter.com",
-      icon: Twitter,
-      label: "Twitter",
+      href: "#",
+      icon: MessageCircle,
+      label: "WeChat",
+      text: "lty112500",
+      onClick: () => {
+        navigator.clipboard.writeText('lty112500');
+        alert('微信号已复制到剪贴板：lty112500');
+      }
     },
   ];
 
@@ -91,19 +99,37 @@ export default function Footer() {
               for travelers.
             </p>
 
-            {/* Social Links */}
-            <div className="flex items-center space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-5 w-5" />
-                </a>
+            {/* Contact Links - With Hover Tooltip */}
+            <div className="flex items-center space-x-6">
+              {contactLinks.map((contact) => (
+                <div key={contact.label} className="relative group">
+                  {contact.onClick ? (
+                    <button
+                      onClick={contact.onClick}
+                      className="text-muted-foreground hover:text-foreground transition-colors opacity-60 hover:opacity-100"
+                    >
+                      <contact.icon className="h-5 w-5" />
+                    </button>
+                  ) : (
+                    <a
+                      href={contact.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors opacity-60 hover:opacity-100"
+                      aria-label={contact.label}
+                    >
+                      <contact.icon className="h-5 w-5" />
+                    </a>
+                  )}
+                  
+                  {/* Hover Tooltip */}
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-foreground text-background text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                    <div className="text-center">
+                      <div className="font-medium">{contact.label}</div>
+                      <div className="text-xs opacity-90">{contact.text}</div>
+                    </div>
+                    {/* Arrow */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-foreground"></div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

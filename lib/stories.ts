@@ -21,13 +21,26 @@ function extractTitle(content: string): { title: string; titleEn: string } {
   const lines = content.split('\n');
   const firstLine = lines[0]?.trim() || '';
   
+  // Remove any markdown heading symbols
+  const cleanFirstLine = firstLine.replace(/^#+\s*/, '');
+  
   // Check if first line contains both Chinese and English title separated by |
-  if (firstLine.includes('|')) {
-    const [title, titleEn] = firstLine.split('|').map(t => t.trim());
+  if (cleanFirstLine.includes('|')) {
+    const [title, titleEn] = cleanFirstLine.split('|').map(t => t.trim());
     return { title, titleEn };
   }
   
-  return { title: firstLine, titleEn: firstLine };
+  return { title: cleanFirstLine, titleEn: cleanFirstLine };
+}
+
+// Helper function to clean markdown symbols from text
+function cleanMarkdown(text: string): string {
+  return text
+    .replace(/^#+\s*/gm, '') // Remove heading symbols
+    .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold markers
+    .replace(/\*(.*?)\*/g, '$1') // Remove italic markers
+    .replace(/`(.*?)`/g, '$1') // Remove inline code markers
+    .trim();
 }
 
 // Helper function to separate Chinese and English content
@@ -58,7 +71,7 @@ function separateContent(content: string): { content: string; contentEn: string;
     }
     
     if (line) {
-      contentLines.push(line);
+      contentLines.push(cleanMarkdown(line)); // Clean markdown from each line
     }
   }
   
@@ -203,12 +216,13 @@ export async function getAllCities(): Promise<City[]> {
   const cities: City[] = [];
   
   for (const [cityName, data] of cityMap.entries()) {
+    const citySlug = CITY_MAPPINGS[cityName as CityName] || cityName.toLowerCase();
     const city: City = {
       name: cityName,
       nameEn: CITY_NAMES_EN[cityName as CityName],
-      slug: CITY_MAPPINGS[cityName as CityName] || cityName.toLowerCase(),
+      slug: citySlug,
       storyCount: data.count,
-      heroImage: data.stories[0]?.imagePath // Use first story's image as city hero
+      heroImage: `/city_photo/${citySlug}.jpg` // Use dedicated city photo
     };
     cities.push(city);
   }
