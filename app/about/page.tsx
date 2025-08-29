@@ -52,158 +52,86 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hero Section */}
-        <section className="text-center mb-20">
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <section className="text-center mb-20 animate-fade-in">
+          <h1 className="text-4xl lg:text-5xl font-medium text-foreground mb-6 typography-chinese">
             关于我们
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 typography-heading-en italic">
             About Story of Us
           </p>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            我们是一对热爱旅行的情侣，用脚步丈量城市，用心灵感受温暖。
-            在每一次旅途中，我们都会遇见许多有趣的人，听到许多动人的故事。
-          </p>
+          <div className="max-w-4xl mx-auto space-y-6">
+            <p className="text-lg text-muted-foreground leading-relaxed animate-slide-up animate-delay-200">
+              在过去的两年中，我利用假期时间独自游历了中国的多个城市。在这些旅程中，我与当地人进行了深入的对话，聆听他们的故事，感受他们的生活。
+            </p>
+            <p className="text-base text-muted-foreground/80 leading-relaxed typography-heading-en animate-slide-up animate-delay-400">
+              Over the past two years, I have taken the opportunity of my holiday time to travel solo through numerous cities across China. Through these voyages, I have engaged in deep conversations with the locals, listened to their tales, and immersed myself in their daily lives.
+            </p>
+          </div>
         </section>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           
           {/* Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-10 animate-slide-up animate-delay-300">
             <div>
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">
-                我们的初衷
+              <h2 className="text-2xl lg:text-3xl font-medium text-foreground mb-8 typography-chinese">
+                我的初衷
               </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
+                <p className="text-lg">
+                  我相信，正是无数个人的故事编织成了我们共同的记忆和历史。旅行的意义不仅仅在于看风景，更在于遇见不同的人，听到不同的故事。
+                </p>
                 <p>
-                  旅行的意义不仅仅在于看风景，更在于遇见不同的人，听到不同的故事。
-                  在成都的小巷里，我们遇见了坚强的粮油店奶奶；在重庆的山城步道上，
-                  我们听到了老爷爷的人生感悟；在南京的街头，我们感受到了计程车司机的温暖...
+                  在成都的小巷里，我遇见了坚强的粮油店奶奶；在重庆的山城步道上，
+                  我听到了老爷爷的人生感悟；在南京的街头，我感受到了出租车司机的温暖；在武汉的街道上，我与当地人分享着生活的点滴...
                 </p>
                 <p>
                   这些故事虽然平凡，却充满了人间烟火气。每一个故事背后，
                   都有一个鲜活的生命，都有着独特的人生经历和感悟。
-                  我们希望通过记录和分享这些故事，传递人与人之间的温暖，
+                  我希望通过记录和分享这些故事，传递人与人之间的温暖，
                   让更多人感受到生活的美好。
                 </p>
-                <p>
-                  Story of Us 不仅仅是我们两个人的故事，更是所有在旅途中
+                <p className="text-base text-foreground/80 font-medium border-l-4 border-primary pl-4">
+                  Story of Us 不仅仅是我个人的故事，更是所有在旅途中
                   相遇的人们的故事。每一个故事都值得被听见，每一份温暖都值得被传递。
                 </p>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-xl font-semibold text-foreground mb-4">
-                Our Mission 我们的使命
+            <div className="p-6 bg-card/50 rounded-2xl border border-border">
+              <h3 className="text-xl font-medium text-foreground mb-4 typography-heading-en">
+                My Mission
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                To capture and share the warmth of human connections encountered 
-                during our travels, celebrating the ordinary people who make 
-                extraordinary differences in our journey through life.
+              <p className="text-muted-foreground leading-relaxed typography-heading-en">
+                My aim is to understand society through the narratives of every ordinary person, for it is the countless stories of individuals that are woven together to form our shared memory and history.
               </p>
             </div>
           </div>
 
-          {/* Image Placeholder */}
-          <div className="relative">
-            <div className="aspect-[4/5] bg-warm-100 rounded-2xl overflow-hidden">
-              <div className="flex items-center justify-center h-full text-warm-400">
-                <div className="text-center">
-                  <Camera className="h-16 w-16 mx-auto mb-4" />
-                  <p className="text-lg font-medium">我们的合照</p>
-                  <p className="text-sm">Our Photo Together</p>
+          {/* Visual Content */}
+          <div className="relative animate-scale-in animate-delay-500">
+            <div className="aspect-[4/5] bg-gradient-to-br from-warm-100 to-warm-200 rounded-2xl overflow-hidden card-elevated">
+              <div className="flex items-center justify-center h-full text-warm-600">
+                <div className="text-center p-8">
+                  <div className="relative mb-6">
+                    <Map className="h-16 w-16 mx-auto mb-2 animate-float" />
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                      <span className="text-xs text-white font-bold">4</span>
+                    </div>
+                  </div>
+                  <p className="text-lg font-medium typography-chinese mb-2">行走的故事</p>
+                  <p className="text-sm typography-heading-en opacity-75">Walking Stories</p>
+                  <div className="mt-4 space-y-2 text-sm opacity-60">
+                    <p>成都 • 重庆</p>
+                    <p>南京 • 武汉</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Features */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-              我们的特色
-            </h2>
-            <p className="text-muted-foreground">
-              What makes our stories special
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature) => (
-              <div key={feature.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 text-primary rounded-full mb-6">
-                  <feature.icon className="h-8 w-8" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  {feature.titleEn}
-                </p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Stats */}
-        <section className="bg-warm-50 rounded-2xl p-8 lg:p-12 mb-20">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-              我们的足迹
-            </h2>
-            <p className="text-muted-foreground">
-              Our Journey in Numbers
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-foreground font-medium mb-1">
-                  {stat.label}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {stat.labelEn}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="text-center">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">
-              开始你的故事之旅
-            </h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              每个人都有属于自己的故事。让我们一起在这些温暖的相遇中，
-              发现生活的美好，感受人间的温暖。
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/stories"
-                className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
-              >
-                开始阅读 Start Reading
-              </Link>
-              <Link
-                href="/city/chengdu"
-                className="inline-flex items-center justify-center px-8 py-3 border border-border text-foreground rounded-full hover:bg-accent transition-colors"
-              >
-                探索城市 Explore Cities
-              </Link>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );

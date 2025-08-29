@@ -111,7 +111,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
           <div className="flex items-center space-x-4 mb-6">
             <span className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
               <MapPin className="h-4 w-4 mr-1" />
-              {story.city} {story.cityEn}
+              {story.city}
             </span>
             {story.location && (
               <span className="text-muted-foreground text-sm">

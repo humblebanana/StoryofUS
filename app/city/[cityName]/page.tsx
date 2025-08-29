@@ -111,9 +111,6 @@ export default async function CityPage({ params }: CityPageProps) {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
               {chineseCityName}
             </h1>
-            <p className="text-2xl sm:text-3xl lg:text-4xl font-light text-white/90 mb-6">
-              {englishCityName}
-            </p>
 
             {/* Stats */}
             <div className="flex items-center justify-center space-x-6 text-white/80">

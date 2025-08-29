@@ -8,6 +8,7 @@ interface StoryCardProps {
   priority?: boolean;
   className?: string;
   showCity?: boolean;
+  showLocation?: boolean;
 }
 
 export default function StoryCard({ 
@@ -39,7 +40,7 @@ export default function StoryCard({
         {showCity && (
           <div className="absolute top-4 left-4 transform group-hover:scale-105 transition-transform duration-300">
             <span className="inline-block px-3 py-1 text-xs font-medium bg-background/80 backdrop-blur-sm text-foreground rounded-full shadow-sm">
-              {story.city} {story.cityEn}
+              {story.city}
             </span>
           </div>
         )}
