@@ -20,7 +20,7 @@ export default function StoryCard({
     <Link
       href={`/stories/${story.slug}`}
       className={cn(
-        "group block bg-card rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1",
+        "group block bg-card rounded-xl overflow-hidden card-elevated hover-lift transition-all duration-300",
         className
       )}
     >
@@ -30,15 +30,15 @@ export default function StoryCard({
           src={story.imagePath}
           alt={story.imageAlt}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-110 transition-all duration-700 ease-out"
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         
         {/* City Badge */}
         {showCity && (
-          <div className="absolute top-4 left-4">
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-background/80 backdrop-blur-sm text-foreground rounded-full">
+          <div className="absolute top-4 left-4 transform group-hover:scale-105 transition-transform duration-300">
+            <span className="inline-block px-3 py-1 text-xs font-medium bg-background/80 backdrop-blur-sm text-foreground rounded-full shadow-sm">
               {story.city} {story.cityEn}
             </span>
           </div>
@@ -49,25 +49,25 @@ export default function StoryCard({
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-7">
         {/* Title */}
-        <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="text-xl font-medium text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 typography-chinese leading-tight">
           {story.title}
         </h3>
         
         {/* English Title */}
-        <p className="text-sm text-muted-foreground mb-3 line-clamp-1">
+        <p className="text-base text-muted-foreground mb-4 line-clamp-1 typography-heading-en italic opacity-80">
           {story.titleEn}
         </p>
 
         {/* Excerpt */}
-        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-4">
+        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-5 opacity-90">
           {story.excerpt}
         </p>
 
         {/* Location (if available) */}
         {story.location && (
-          <div className="flex items-center text-xs text-muted-foreground">
+          <div className="flex items-center text-xs text-muted-foreground opacity-70">
             <span>📍 {story.location}</span>
           </div>
         )}

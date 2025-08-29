@@ -165,34 +165,77 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
       {/* Related Stories */}
       {relatedStories.length > 0 && (
-        <section className="bg-warm-50 py-16">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-2xl lg:text-3xl font-medium text-foreground mb-4 typography-chinese">
                 更多{story.city}的故事
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-lg text-muted-foreground typography-heading-en">
                 Discover more stories from {story.cityEn}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedStories.map((relatedStory) => (
-                <CompactStoryCard
+            {/* Elegant Story Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedStories.map((relatedStory, index) => (
+                <div
                   key={relatedStory.slug}
-                  story={relatedStory}
-                  className="bg-background"
-                />
+                  className={`animate-fade-in animate-delay-${(index + 1) * 100}`}
+                >
+                  <Link
+                    href={`/stories/${relatedStory.slug}`}
+                    className="group block"
+                  >
+                    <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6 card-elevated hover-lift">
+                      <Image
+                        src={relatedStory.imagePath}
+                        alt={relatedStory.imageAlt}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="text-white">
+                          <div className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium mb-3">
+                            📍 {relatedStory.location || relatedStory.city}
+                          </div>
+                          <h3 className="text-lg font-semibold mb-2 typography-chinese line-clamp-2">
+                            {relatedStory.title}
+                          </h3>
+                          <p className="text-sm text-white/80 typography-heading-en line-clamp-1">
+                            {relatedStory.titleEn}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               ))}
             </div>
 
-            <div className="text-center mt-8">
-              <Link
-                href={`/city/${CITY_MAPPINGS[story.city as CityName] || story.city.toLowerCase()}`}
-                className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
-              >
-                查看{story.city}所有故事
-              </Link>
+            {/* Subtle Navigation */}
+            <div className="text-center mt-16">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <Link
+                  href={`/city/${CITY_MAPPINGS[story.city as CityName] || story.city.toLowerCase()}`}
+                  className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  <span className="mr-2">查看{story.city}所有故事</span>
+                  <span className="text-sm mr-3">View All {story.cityEn} Stories</span>
+                  <div className="w-6 h-px bg-current group-hover:w-12 transition-all duration-300"></div>
+                </Link>
+                <div className="w-px h-4 bg-border hidden sm:block"></div>
+                <Link
+                  href="/stories"
+                  className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  <span className="mr-2">浏览所有故事</span>
+                  <span className="text-sm mr-3">Browse All Stories</span>
+                  <div className="w-6 h-px bg-current group-hover:w-12 transition-all duration-300"></div>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

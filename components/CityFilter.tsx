@@ -23,45 +23,48 @@ export default function CityFilter({
   if (variant === "cards") {
     return (
       <div className={cn("grid grid-cols-2 lg:grid-cols-4 gap-6", className)}>
-        {cities.map((city) => (
-          <Link
+        {cities.map((city, index) => (
+          <div
             key={city.slug}
-            href={`/city/${city.slug}`}
-            className={cn(
-              "group relative overflow-hidden rounded-xl aspect-[4/3] block",
-              "bg-gradient-to-t from-black/60 via-black/20 to-transparent",
-              "hover:scale-105 transition-transform duration-300",
-              currentCity === city.slug && "ring-2 ring-primary"
-            )}
+            className={`animate-scale-in animate-delay-${Math.min((index + 1) * 100, 600)}`}
           >
-            {/* Background Image */}
-            {city.heroImage && (
-              <Image
-                src={city.heroImage}
-                alt={`${city.name} stories`}
-                fill
-                className="object-cover -z-10"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
-            )}
-            
-            {/* Content */}
-            <div className="absolute inset-0 flex flex-col justify-end p-4">
-              <div className="text-white">
-                <h3 className="text-lg font-semibold mb-1">
-                  {city.name}
-                </h3>
-                <p className="text-sm text-white/80 mb-2">
-                  {city.nameEn}
-                </p>
-                {showCounts && (
-                  <p className="text-xs text-white/70">
-                    {city.storyCount} 个故事
+            <Link
+              href={`/city/${city.slug}`}
+              className={cn(
+                "relative overflow-hidden rounded-xl aspect-[4/3] block card-elevated",
+                "transition-all duration-300 hover:scale-105",
+                currentCity === city.slug && "ring-2 ring-primary"
+              )}
+            >
+              {/* Background Image - Always visible */}
+              {city.heroImage && (
+                <Image
+                  src={city.heroImage}
+                  alt={`${city.name} stories`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              )}
+              
+              {/* Content overlay - Always visible */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-4">
+                <div className="text-white">
+                  <h3 className="text-lg font-semibold mb-1">
+                    {city.name}
+                  </h3>
+                  <p className="text-sm text-white/80 mb-2">
+                    {city.nameEn}
                   </p>
-                )}
+                  {showCounts && (
+                    <p className="text-xs text-white/70">
+                      {city.storyCount} 个故事
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
       </div>
     );

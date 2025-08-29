@@ -74,6 +74,9 @@ export default {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
+        serif: ["var(--font-noto-serif-sc)", "var(--font-libre-baskerville)", "serif"],
+        "libre": ["var(--font-libre-baskerville)", "serif"],
+        "noto-serif": ["var(--font-noto-serif-sc)", "serif"],
       },
       keyframes: {
         "accordion-down": {

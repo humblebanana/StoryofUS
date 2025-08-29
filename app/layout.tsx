@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Libre_Baskerville, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,6 +12,21 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const libreBaskerville = Libre_Baskerville({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-libre-baskerville",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-serif-sc",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -42,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} ${libreBaskerville.variable} ${notoSerifSC.variable} antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
         <main className="flex-1">

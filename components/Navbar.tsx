@@ -39,13 +39,19 @@ export default function Navbar() {
           <Link
             href="/"
             className={cn(
-              "text-xl transition-colors",
+              "navbar-link text-xl font-bold transition-colors relative group",
               isScrolled
                 ? "text-foreground hover:text-primary"
                 : "text-white hover:text-white/80"
             )}
           >
-           我們 Story of Us
+            <span className="typography-heading-en">Story of Us</span> <span className="typography-chinese">我们</span>
+            <span 
+              className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full",
+                isScrolled ? "bg-primary" : "bg-white"
+              )}
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -55,7 +61,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "transition-colors relative group",
+                  "navbar-link transition-colors relative group",
                   isScrolled
                     ? "text-foreground/80 hover:text-foreground"
                     : "text-white/80 hover:text-white"
@@ -74,7 +80,7 @@ export default function Navbar() {
                 </span>
                 <span 
                   className={cn(
-                    "absolute -bottom-1 left-0 w-0 h-0.5 transition-all group-hover:w-full",
+                    "absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full",
                     isScrolled ? "bg-primary" : "bg-white"
                   )}
                 />
@@ -86,7 +92,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
-              "md:hidden p-2 transition-colors",
+              "navbar-button md:hidden p-2 transition-colors",
               isScrolled
                 ? "text-foreground hover:text-primary"
                 : "text-white hover:text-white/80"
@@ -110,7 +116,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-foreground/80 hover:text-foreground transition-colors px-2 py-1"
+                  className="navbar-link text-foreground/80 hover:text-foreground transition-colors px-2 py-1 relative group block"
                 >
                   <div className="flex items-center space-x-2">
                     <span>{item.label}</span>
@@ -118,6 +124,7 @@ export default function Navbar() {
                       {item.labelEn}
                     </span>
                   </div>
+                  <span className="absolute bottom-0 left-2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-[calc(100%-1rem)]" />
                 </Link>
               ))}
             </div>

@@ -157,29 +157,73 @@ export default async function CityPage({ params }: CityPageProps) {
             ))}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center mt-16 py-12 bg-warm-50 rounded-2xl">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              探索更多城市故事
-            </h3>
-            <p className="text-muted-foreground mb-8">
-              Explore stories from other cities and discover more heartwarming encounters.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
+          {/* More Stories Section */}
+          <section className="mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl lg:text-3xl font-medium text-foreground mb-4 typography-chinese">
+                探索更多城市
+              </h3>
+              <p className="text-lg text-muted-foreground typography-heading-en">
+                Explore More Cities
+              </p>
+            </div>
+            
+            {/* Elegant City Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {cities
                 .filter(city => city.slug !== cityName)
                 .slice(0, 3)
-                .map((city) => (
-                <Link
+                .map((city, index) => (
+                <div
                   key={city.slug}
-                  href={`/city/${city.slug}`}
-                  className="inline-flex items-center px-6 py-3 bg-background border border-border text-foreground rounded-full hover:bg-accent transition-colors"
+                  className={`animate-fade-in animate-delay-${(index + 1) * 100}`}
                 >
-                  {city.name} {city.nameEn}
-                </Link>
+                  <Link
+                    href={`/city/${city.slug}`}
+                    className="group block"
+                  >
+                    <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4 card-elevated hover-lift">
+                      {city.heroImage && (
+                        <Image
+                          src={city.heroImage}
+                          alt={`${city.name} stories`}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <div className="text-white">
+                          <div className="inline-flex items-center px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium mb-3">
+                            {city.storyCount} 个故事
+                          </div>
+                          <h4 className="text-xl font-semibold mb-1 typography-chinese">
+                            {city.name}
+                          </h4>
+                          <p className="text-sm text-white/80 typography-heading-en">
+                            {city.nameEn}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               ))}
             </div>
-          </div>
+
+            {/* Subtle CTA */}
+            <div className="text-center mt-12">
+              <Link
+                href="/stories"
+                className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors group"
+              >
+                <span className="mr-2">查看所有故事</span>
+                <span className="text-sm mr-3">View All Stories</span>
+                <div className="w-6 h-px bg-current group-hover:w-12 transition-all duration-300"></div>
+              </Link>
+            </div>
+          </section>
         </div>
       </div>
     </div>

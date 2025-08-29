@@ -230,11 +230,60 @@ export async function getAllCities(): Promise<City[]> {
   return cities;
 }
 
-// Get latest stories (for homepage)
+// Get latest stories (for homepage) - randomly selected from different cities
 export async function getLatestStories(limit: number = 6): Promise<Story[]> {
   const allStories = await getAllStories();
-  // For now, return the first N stories (you could implement date-based sorting later)
-  return allStories.slice(0, limit);
+  
+  if (allStories.length === 0) return [];
+  
+  // Group stories by city
+  const storiesByCity = new Map<string, Story[]>();
+  for (const story of allStories) {
+    if (!storiesByCity.has(story.city)) {
+      storiesByCity.set(story.city, []);
+    }
+    storiesByCity.get(story.city)!.push(story);
+  }
+  
+  const cities = Array.from(storiesByCity.keys());
+  const selectedStories: Story[] = [];
+  
+  // Try to get stories from different cities first
+  let cityIndex = 0;
+  while (selectedStories.length < limit && selectedStories.length < allStories.length) {
+    const cityName = cities[cityIndex % cities.length];
+    const cityStories = storiesByCity.get(cityName)!;
+    
+    // Find a story from this city that hasn't been selected yet
+    const availableStories = cityStories.filter(
+      story => !selectedStories.some(selected => selected.slug === story.slug)
+    );
+    
+    if (availableStories.length > 0) {
+      // Randomly select one story from this city
+      const randomIndex = Math.floor(Math.random() * availableStories.length);
+      selectedStories.push(availableStories[randomIndex]);
+    }
+    
+    cityIndex++;
+    
+    // If we've cycled through all cities, break to avoid infinite loop
+    if (cityIndex > cities.length * 10) break;
+  }
+  
+  // If we still need more stories, fill from any remaining stories
+  if (selectedStories.length < limit) {
+    const remainingStories = allStories.filter(
+      story => !selectedStories.some(selected => selected.slug === story.slug)
+    );
+    
+    // Shuffle and take what we need
+    const shuffled = remainingStories.sort(() => Math.random() - 0.5);
+    selectedStories.push(...shuffled.slice(0, limit - selectedStories.length));
+  }
+  
+  // Final shuffle of selected stories
+  return selectedStories.sort(() => Math.random() - 0.5).slice(0, limit);
 }
 
 // Get related stories (same city, excluding current story)

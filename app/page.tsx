@@ -22,12 +22,12 @@ export default async function Home() {
           
           {/* Latest Stories Section */}
           <section className="mb-20">
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center justify-between mb-12 animate-slide-up">
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                <h2 className="text-3xl lg:text-4xl font-medium text-foreground mb-4 typography-chinese leading-tight">
                   最新故事
                 </h2>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-xl text-muted-foreground typography-heading-en italic opacity-80">
                   Latest Stories
                 </p>
               </div>
@@ -44,23 +44,30 @@ export default async function Home() {
             {/* Stories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {latestStories.map((story, index) => (
-                <StoryCard
+                <div
                   key={story.slug}
-                  story={story}
-                  priority={index < 3} // Prioritize loading for first 3 images
-                />
+                  className={`animate-fade-in animate-delay-${Math.min((index + 1) * 100, 600)}`}
+                >
+                  <StoryCard
+                    story={story}
+                    priority={index < 3}
+                  />
+                </div>
               ))}
             </div>
           </section>
 
           {/* City Exploration Section */}
           <section className="mb-20">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-                城市探索 City
+            <div className="text-center mb-12 animate-slide-up">
+              <h2 className="text-3xl lg:text-4xl font-medium text-foreground mb-6 typography-chinese leading-tight">
+                城市探索
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Explore by City - 按城市探索每一个故事
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto typography-heading-en italic mb-2">
+                Explore by City
+              </p>
+              <p className="text-muted-foreground max-w-2xl mx-auto opacity-80">
+                按城市探索每一个故事
               </p>
             </div>
 
@@ -68,24 +75,24 @@ export default async function Home() {
           </section>
 
           {/* Call to Action */}
-          <section className="text-center py-16 bg-warm-50 rounded-2xl">
+          <section className="text-center py-16 animate-fade-in animate-delay-300">
             <div className="max-w-2xl mx-auto px-6">
-              <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+              <h3 className="text-2xl lg:text-3xl font-medium text-foreground mb-4 animate-slide-up animate-delay-400 typography-chinese">
                 每个人都有故事值得被听见
               </h3>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 animate-slide-up animate-delay-500 typography-heading-en">
                 Everyone has a story worth being heard. Join us in discovering the warmth and humanity in every journey.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in animate-delay-600">
                 <Link
                   href="/stories"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 btn-warm text-primary-foreground rounded-full font-medium tracking-wide"
                 >
                   开始阅读 Start Reading
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center justify-center px-8 py-3 border border-border text-foreground rounded-full hover:bg-accent transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-card border-2 border-warm-200 text-foreground rounded-full hover:bg-warm-50 hover:border-warm-300 transition-all duration-300 hover-lift font-medium tracking-wide"
                 >
                   了解我们 About Us
                 </Link>

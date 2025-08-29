@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 9%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 9%;
-  --primary: 0 0% 9%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 96%;
-  --secondary-foreground: 0 0% 9%;
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 45%;
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 9%;
+  /* Warm, humanistic color palette */
+  --background: 30 15% 98%; /* Warm off-white */
+  --foreground: 20 15% 15%; /* Dark brown-gray */
+  --card: 30 20% 99%;
+  --card-foreground: 20 15% 15%;
+  --popover: 30 20% 99%;
+  --popover-foreground: 20 15% 15%;
+  --primary: 15 25% 25%; /* Warm dark brown */
+  --primary-foreground: 30 20% 95%;
+  --secondary: 25 15% 92%; /* Warm light gray */
+  --secondary-foreground: 20 15% 15%;
+  --muted: 25 10% 90%; /* Subtle warm gray */
+  --muted-foreground: 20 8% 50%; /* Medium warm gray */
+  --accent: 35 25% 94%; /* Warm cream */
+  --accent-foreground: 20 15% 15%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 9%;
+  --border: 25 12% 88%; /* Warm border */
+  --input: 25 12% 88%;
+  --ring: 15 25% 25%;
   --radius: 0.5rem;
+  
+  /* Additional warm colors */
+  --warm-50: 30 40% 98%;
+  --warm-100: 30 30% 95%;
+  --warm-200: 25 25% 90%;
+  --warm-300: 25 20% 82%;
+  --warm-400: 20 15% 65%;
+  --warm-500: 18 12% 50%;
+  --warm-600: 15 15% 35%;
+  --warm-700: 15 20% 25%;
+  --warm-800: 12 25% 18%;
+  --warm-900: 10 30% 12%;
 }
 
 .dark {
@@ -56,6 +69,20 @@
   --color-card: hsl(var(--card));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-noto-serif-sc);
+  --font-libre: var(--font-libre-baskerville);
+  
+  /* Warm color utilities */
+  --color-warm-50: hsl(var(--warm-50));
+  --color-warm-100: hsl(var(--warm-100));
+  --color-warm-200: hsl(var(--warm-200));
+  --color-warm-300: hsl(var(--warm-300));
+  --color-warm-400: hsl(var(--warm-400));
+  --color-warm-500: hsl(var(--warm-500));
+  --color-warm-600: hsl(var(--warm-600));
+  --color-warm-700: hsl(var(--warm-700));
+  --color-warm-800: hsl(var(--warm-800));
+  --color-warm-900: hsl(var(--warm-900));
 }
 
 * {
@@ -64,9 +91,29 @@
 
 body {
   background-color: hsl(var(--background));
+  background-image: 
+    radial-gradient(circle at 25% 25%, hsl(var(--warm-50)) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, hsl(var(--accent)) 0%, transparent 50%);
   color: hsl(var(--foreground));
   font-feature-settings: "rlig" 1, "calt" 1;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Enhanced typography system */
+.typography-chinese {
+  font-family: var(--font-noto-serif-sc), serif;
+}
+
+.typography-english {
+  font-family: var(--font-libre-baskerville), serif;
+}
+
+.typography-heading-en {
+  font-family: var(--font-libre-baskerville), serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 /* Custom story typography */
@@ -75,18 +122,324 @@ body {
 }
 
 .prose h1 {
-  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-foreground;
+  @apply text-2xl md:text-3xl lg:text-4xl mb-8 text-foreground leading-tight;
+  font-family: var(--font-noto-serif-sc), serif;
+  font-weight: 600;
+}
+
+.prose h1.english {
+  font-family: var(--font-libre-baskerville), serif;
+  font-weight: 400;
 }
 
 .prose h2 {
-  @apply text-xl md:text-2xl font-semibold mb-4 text-foreground;
+  @apply text-xl md:text-2xl mb-6 text-foreground leading-tight;
+  font-family: var(--font-noto-serif-sc), serif;
+  font-weight: 500;
 }
 
 .prose p {
-  @apply mb-4 leading-7 text-muted-foreground;
+  @apply mb-6 leading-8 text-muted-foreground;
+  font-size: 1.05rem;
 }
 
-/* Smooth scrolling */
+/* Enhanced visual depth with warm shadows */
+.card-elevated {
+  box-shadow: 
+    0 1px 3px rgba(139, 69, 19, 0.08), /* Warm brown shadow */
+    0 4px 16px rgba(139, 69, 19, 0.04),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset; /* Subtle inner highlight */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--warm-50)));
+}
+
+.card-elevated:hover {
+  box-shadow: 
+    0 4px 16px rgba(139, 69, 19, 0.12),
+    0 8px 32px rgba(139, 69, 19, 0.08),
+    0 2px 0 rgba(255, 255, 255, 0.8) inset;
+  transform: translateY(-6px);
+}
+
+/* Smooth animations */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Staggered animation delays */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-600 { animation-delay: 0.6s; }
+
+/* Page transition effects */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Loading states */
+.loading-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Enhanced hover interactions */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 12px 40px rgba(139, 69, 19, 0.15),
+    0 4px 12px rgba(139, 69, 19, 0.1);
+}
+
+/* Button enhancements */
+.btn-warm {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--warm-700)));
+  box-shadow: 
+    0 2px 8px rgba(139, 69, 19, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-warm:hover {
+  background: linear-gradient(135deg, hsl(var(--warm-700)), hsl(var(--primary)));
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 16px rgba(139, 69, 19, 0.3),
+    0 2px 0 rgba(255, 255, 255, 0.2) inset;
+}
+
+/* Text selection styling */
+::selection {
+  background-color: hsl(var(--warm-200));
+  color: hsl(var(--warm-800));
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--warm-600)));
+  transform-origin: left;
+  z-index: 50;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced focus styles */
+*:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Improved text rendering */
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling with easing */
 html {
   scroll-behavior: smooth;
+}
+
+/* Responsive refinements */
+@media (max-width: 640px) {
+  .card-elevated {
+    box-shadow: 
+      0 1px 2px rgba(139, 69, 19, 0.06),
+      0 2px 8px rgba(139, 69, 19, 0.04);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+  
+  .btn-warm {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(var(--warm-50)) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, hsl(var(--accent)) 0%, transparent 40%);
+  }
+}
+
+/* Enhanced focus for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Remove all focus styles for navbar - comprehensive approach */
+nav *:focus,
+nav *:focus-visible,
+nav *:active,
+header *:focus,
+header *:focus-visible,
+header *:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Specifically target navbar links and buttons */
+.navbar-link,
+.navbar-button,
+.navbar-link:focus,
+.navbar-link:focus-visible,
+.navbar-link:active,
+.navbar-button:focus,
+.navbar-button:focus-visible,
+.navbar-button:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: none !important;
+}
+
+/* Override any default browser styles - GLOBAL */
+*:focus,
+*:focus-visible,
+*:active,
+a:focus,
+a:focus-visible, 
+a:active,
+a[href]:focus,
+a[href]:focus-visible,
+a[href]:active,
+button:focus,
+button:focus-visible,
+button:active,
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: inherit !important;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary: 10 40% 20%;
+    --foreground: 0 0% 5%;
+    --muted-foreground: 0 0% 25%;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-float {
+    animation: none;
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+  }
 }
