@@ -2,11 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { ArrowLeft, MapPin, Calendar, Tag } from "lucide-react";
+// 删除未使用的导入
+// import { ArrowLeft, MapPin, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, MapPin } from "lucide-react";
 import { getStoryBySlug, getAllStories, getRelatedStories } from "@/lib/stories";
 import { CITY_MAPPINGS, CityName } from "@/lib/types";
 import ImageGallery from "@/components/ImageGallery";
-import { CompactStoryCard } from "@/components/StoryCard";
+// 删除未使用的导入
+// import { CompactStoryCard } from "@/components/StoryCard";
 
 interface StoryPageProps {
   params: Promise<{ slug: string }>;

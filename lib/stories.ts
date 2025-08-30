@@ -47,10 +47,12 @@ function cleanMarkdown(text: string): string {
 // Helper function to separate Chinese and English content
 function separateContent(content: string): { content: string; contentEn: string; location?: string } {
   const lines = content.split('\n');
-  const titleLine = lines[0] || '';
+  // 删除未使用的变量
+  // const titleLine = lines[0] || '';
   
   // Skip title line and empty lines
-  let contentLines: string[] = [];
+  // 将let改为const
+  const contentLines: string[] = [];
   let englishStart = -1;
   let location: string | undefined;
   

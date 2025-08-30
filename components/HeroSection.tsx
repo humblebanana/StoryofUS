@@ -5,6 +5,7 @@ import ScrollIndicator from "@/components/ScrollIndicator";
 
 interface HeroSectionProps {
   title?: string;
+  // 可以保留这个属性，但在函数参数中不使用它
   titleEn?: string;
   subtitle?: string;
   subtitleEn?: string;
@@ -12,8 +13,9 @@ interface HeroSectionProps {
   showScrollIndicator?: boolean;
 }
 export default function HeroSection({
-  title = "這是一個從我們的故事了解“我們”的角落",
-  titleEn = "Great people write great stories, ordinaries just live their stories",
+  title = "這是一個從我們的故事了解"我們"的角落",
+  // 删除未使用的参数
+  // titleEn = "Great people write great stories, ordinaries just live their stories",
   subtitle = "",
   subtitleEn = "",
   backgroundImage = "/cover.png",

@@ -15,7 +15,8 @@ export default function StoryCard({
   story, 
   priority = false, 
   className,
-  showCity = true 
+  // 删除未使用的参数
+  // showCity = true 
 }: StoryCardProps) {
   return (
     <Link

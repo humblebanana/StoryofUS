@@ -7,7 +7,9 @@ import { getStoriesByCity, getAllCities } from "@/lib/stories";
 import { CITY_MAPPINGS, CITY_NAMES_EN, CityName } from "@/lib/types";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, MapPin } from "lucide-react";
+// 删除未使用的导入
+// import { ArrowLeft, MapPin } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 interface CityPageProps {
   params: Promise<{ cityName: string }>;
@@ -30,7 +32,8 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     key => CITY_MAPPINGS[key as CityName] === cityName
   ) as CityName;
   
-  const englishCityName = chineseCityName ? CITY_NAMES_EN[chineseCityName] : cityName;
+  // 删除未使用的变量
+  // const englishCityName = chineseCityName ? CITY_NAMES_EN[chineseCityName] : cityName;
   
   if (!chineseCityName) {
     return {
@@ -40,10 +43,10 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 
   return {
     title: `${chineseCityName}的故事 | Story of Us`,
-    description: `探索我们在${chineseCityName}收集的所有温暖故事，感受这座城市独特的人文魅力。`,
+    description: `探索我们在${chineseCityName}收集的所有温暖故事，感受这座城市独特的人类魅力。`,
     openGraph: {
       title: `${chineseCityName}的故事 | Story of Us`,
-      description: `探索我们在${chineseCityName}收集的所有温暖故事，感受这座城市独特的人文魅力。`,
+      description: `探索我们在${chineseCityName}收集的所有温暖故事，感受这座城市独特的人类魅力。`,
     },
   };
 }
@@ -73,7 +76,7 @@ export default async function CityPage({ params }: CityPageProps) {
       english: 'Chongqing, the mountain city with mountains as bones and rivers as soul. People navigate between layered buildings and river-crossing cable cars, infusing the spiciness of hotpot into their blood, living with a frank and vibrant "jianghu spirit" - a rough yet sincere aesthetic of life that belongs to this mountain city.'
     },
     '武汉': {
-      chinese: '江城武汉，于长江汉水交汇处崛起，素有"九省通衢"之称。黄鹤楼的千古绝唱与东湖的烟波浩渺，共同见证了这座城市的坚韧与新生。一碗热干面，唤醒的是江城人火热的日常与豪迈的情怀。',
+      chinese: '江城武汉，于长江汉水交汇处崛起，素有"九省通衢"之称。黄鹤楼的千古绝唱与东湖的烟波浩渺，共同证明了这座城市的坚韧与新生。一碗热干面，唤醒的是江城人火热的日常与豪迈的情怀。',
       english: 'Wuhan, the river city that rises at the confluence of the Yangtze and Han rivers, known as the "Thoroughfare to Nine Provinces." The eternal song of Yellow Crane Tower and the misty expanse of East Lake together witness this city\'s resilience and renewal. A bowl of hot dry noodles awakens the passionate daily life and bold spirit of Wuhan people.'
     },
     '南京': {
