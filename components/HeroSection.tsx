@@ -13,7 +13,7 @@ interface HeroSectionProps {
   showScrollIndicator?: boolean;
 }
 export default function HeroSection({
-  title = "這是一個從我們的故事了解"我們"的角落",
+  title = "這是一個從我們的故事了解「我們」的角落",
   // 删除未使用的参数
   // titleEn = "Great people write great stories, ordinaries just live their stories",
   subtitle = "",
