@@ -120,10 +120,10 @@ export default async function CityPage({ params }: CityPageProps) {
           <div className="max-w-4xl mx-auto">
 
             {/* City Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 leading-tight typography-chinese">
+            <h1 className="font-bold mb-2 leading-tight typography-chinese" style={{fontSize: 'clamp(3.5rem, 10vw, 7rem)'}}>
               {chineseCityName}
             </h1>
-            <p className="text-xl sm:text-2xl text-white/80 mb-4 typography-heading-en">
+            <p className="text-white/80 mb-4 typography-heading-en" style={{fontSize: 'clamp(1.8rem, 5vw, 3.5rem)'}}>
               {englishCityName}
             </p>
 

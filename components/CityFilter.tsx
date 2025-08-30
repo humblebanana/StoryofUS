@@ -71,42 +71,88 @@ export default function CityFilter({
   }
 
   return (
-    <div className={cn("flex flex-wrap gap-3", className)}>
-      {/* All stories pill */}
-      <Link
-        href="/stories"
-        className={cn(
-          "inline-flex items-center px-6 py-3 rounded-full border transition-all duration-200",
-          !currentCity
-            ? "bg-primary text-primary-foreground border-primary"
-            : "bg-background text-foreground border-border hover:border-primary hover:bg-primary/5"
-        )}
-      >
-        <span className="font-medium">所有故事</span>
-        <span className="ml-2 text-sm opacity-75">All Stories</span>
-      </Link>
-
-      {/* City pills */}
-      {cities.map((city) => (
+    <div className="w-full">
+      {/* Mobile Layout - Stack vertically on small screens */}
+      <div className="sm:hidden space-y-3">
+        {/* All stories button - full width on mobile */}
         <Link
-          key={city.slug}
-          href={`/city/${city.slug}`}
+          href="/stories"
+          className={cn(
+            "w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-200",
+            !currentCity
+              ? "bg-primary text-primary-foreground border-primary shadow-sm"
+              : "bg-card text-foreground border-border hover:border-primary hover:bg-primary/5"
+          )}
+        >
+          <div className="flex flex-col items-start">
+            <span className="font-medium">所有故事</span>
+            <span className="text-xs opacity-75">All Stories</span>
+          </div>
+        </Link>
+
+        {/* City buttons - full width on mobile */}
+        {cities.map((city) => (
+          <Link
+            key={city.slug}
+            href={`/city/${city.slug}`}
+            className={cn(
+              "w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-200",
+              currentCity === city.slug
+                ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                : "bg-card text-foreground border-border hover:border-primary hover:bg-primary/5"
+            )}
+          >
+            <div className="flex flex-col items-start">
+              <span className="font-medium">{city.name}</span>
+              <span className="text-xs opacity-75">{city.nameEn}</span>
+            </div>
+            {showCounts && (
+              <span className="px-2 py-1 bg-black/10 dark:bg-white/10 text-xs rounded-full font-medium">
+                {city.storyCount}
+              </span>
+            )}
+          </Link>
+        ))}
+      </div>
+
+      {/* Desktop Layout - Horizontal pills on larger screens */}
+      <div className="hidden sm:flex flex-wrap justify-center gap-3">
+        {/* All stories pill */}
+        <Link
+          href="/stories"
           className={cn(
             "inline-flex items-center px-6 py-3 rounded-full border transition-all duration-200",
-            currentCity === city.slug
+            !currentCity
               ? "bg-primary text-primary-foreground border-primary"
               : "bg-background text-foreground border-border hover:border-primary hover:bg-primary/5"
           )}
         >
-          <span className="font-medium">{city.name}</span>
-          <span className="ml-2 text-sm opacity-75">{city.nameEn}</span>
-          {showCounts && (
-            <span className="ml-2 px-2 py-0.5 bg-black/10 dark:bg-white/10 text-xs rounded-full">
-              {city.storyCount}
-            </span>
-          )}
+          <span className="font-medium">所有故事</span>
+          <span className="ml-2 text-sm opacity-75">All Stories</span>
         </Link>
-      ))}
+
+        {/* City pills */}
+        {cities.map((city) => (
+          <Link
+            key={city.slug}
+            href={`/city/${city.slug}`}
+            className={cn(
+              "inline-flex items-center px-6 py-3 rounded-full border transition-all duration-200",
+              currentCity === city.slug
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-background text-foreground border-border hover:border-primary hover:bg-primary/5"
+            )}
+          >
+            <span className="font-medium">{city.name}</span>
+            <span className="ml-2 text-sm opacity-75">{city.nameEn}</span>
+            {showCounts && (
+              <span className="ml-2 px-2 py-0.5 bg-black/10 dark:bg-white/10 text-xs rounded-full">
+                {city.storyCount}
+              </span>
+            )}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

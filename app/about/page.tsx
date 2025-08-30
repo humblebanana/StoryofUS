@@ -40,13 +40,6 @@ export default function AboutPage() {
     },
   ];
 
-  const stats = [
-    { number: "4", label: "个城市", labelEn: "Cities" },
-    { number: "32", label: "个故事", labelEn: "Stories" },
-    { number: "32", label: "次相遇", labelEn: "Encounters" },
-    { number: "∞", label: "份温暖", labelEn: "Warmth" },
-  ];
-
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +71,7 @@ export default function AboutPage() {
               <h2 className="text-2xl lg:text-3xl font-medium text-foreground mb-8 typography-chinese">
                 我的初衷
               </h2>
-              <div className="space-y-6 text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-muted-foreground leading-relaxed typography-heading-chinese">
                 <p className="text-lg">
                   我相信，正是无数个人的故事编织成了我们共同的记忆和历史。旅行的意义不仅仅在于看风景，更在于遇见不同的人，听到不同的故事。
                 </p>
@@ -91,10 +84,6 @@ export default function AboutPage() {
                   都有一个鲜活的生命，都有着独特的人生经历和感悟。
                   我希望通过记录和分享这些故事，传递人与人之间的温暖，
                   让更多人感受到生活的美好。
-                </p>
-                <p className="text-base text-foreground/80 font-medium border-l-4 border-primary pl-4">
-                  Story of Us 不仅仅是我个人的故事，更是所有在旅途中
-                  相遇的人们的故事。每一个故事都值得被听见，每一份温暖都值得被传递。
                 </p>
               </div>
             </div>

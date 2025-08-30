@@ -35,7 +35,7 @@ export default function Footer() {
               Story of Us
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              记录旅途中遇见的每一个人，分享他们的故事，传递人与人之间的温暖。
+              记录旅途中遇见的每一个人以及他们的故事，编织我眼中所见的世界
             </p>
             <p className="text-muted-foreground text-xs leading-relaxed">
               Recording every person we meet on our journey, sharing their stories, 

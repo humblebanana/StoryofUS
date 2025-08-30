@@ -46,22 +46,22 @@ export default async function Home() {
           {/* Call to Action */}
           <section className="text-center py-16 animate-fade-in animate-delay-300">
             <div className="max-w-5xl mx-auto px-6">
-              <h3 className="text-2xl lg:text-3xl font-medium text-foreground mb-4 animate-slide-up animate-delay-400 typography-chinese leading-tight">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium text-foreground mb-4 animate-slide-up animate-delay-400 typography-chinese leading-tight">
                 无数个人的故事编织成了我们共同的记忆和历史
               </h3>
-              <p className="text-muted-foreground mb-8 animate-slide-up animate-delay-500 typography-heading-en">
+              <p className="text-sm sm:text-base text-muted-foreground mb-8 animate-slide-up animate-delay-500 typography-heading-en">
                 Countless personal stories weave together to form our collective memory and shared history.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in animate-delay-600">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-scale-in animate-delay-600">
                 <Link
                   href="/stories"
-                  className="inline-flex items-center justify-center px-8 py-4 btn-warm text-primary-foreground rounded-full font-medium tracking-wide"
+                  className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 btn-warm text-primary-foreground rounded-full font-medium tracking-wide text-sm sm:text-base"
                 >
                   探索故事 Discover Stories
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-card border-2 border-warm-200 text-foreground rounded-full hover:bg-warm-50 hover:border-warm-300 transition-all duration-300 hover-lift font-medium tracking-wide"
+                  className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-card border-2 border-warm-200 text-foreground rounded-full hover:bg-warm-50 hover:border-warm-300 transition-all duration-300 hover-lift font-medium tracking-wide text-sm sm:text-base"
                 >
                   了解我们 About Us
                 </Link>

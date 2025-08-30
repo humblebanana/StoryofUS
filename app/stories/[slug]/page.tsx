@@ -113,11 +113,6 @@ export default async function StoryPage({ params }: StoryPageProps) {
               <MapPin className="h-4 w-4 mr-1" />
               {story.city}
             </span>
-            {story.location && (
-              <span className="text-muted-foreground text-sm">
-                📍 {story.location}
-              </span>
-            )}
           </div>
 
           {/* Title */}
@@ -134,7 +129,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
           {/* Chinese Content */}
           <div className="mb-8">
             {story.content.split('\n\n').map((paragraph, index) => (
-              <p key={`zh-${index}`} className="mb-6 text-lg leading-relaxed text-foreground">
+              <p key={`zh-${index}`} className="mb-6 text-lg leading-relaxed text-foreground ">
                 {paragraph}
               </p>
             ))}
