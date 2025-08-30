@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
+  // 修改darkMode配置，可以使用简单的字符串形式
+  darkMode: "class",  // 从 ["class"] 改为 "class"
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
