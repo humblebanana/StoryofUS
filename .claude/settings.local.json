@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest init --yes --tsx --tailwind --src-dir --app --import-alias \"@/*\")",
+      "Bash(find . -name \"story.txt\" -exec sed -i '' '/^Location: Chongqing 重庆$/d' {} ;)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
