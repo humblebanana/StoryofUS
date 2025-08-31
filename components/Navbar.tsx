@@ -93,7 +93,7 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
               "navbar-button md:hidden p-2 transition-colors",
-              isScrolled
+              isScrolled || isMobileMenuOpen
                 ? "text-foreground hover:text-primary"
                 : "text-white hover:text-white/80"
             )}
